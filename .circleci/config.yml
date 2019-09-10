@@ -27,4 +27,6 @@ workflows:
   weeeee:
     jobs:
       - generate
-      - cat
+      - cat:
+          requires:
+            - generate
