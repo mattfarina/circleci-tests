@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  generate:
+    docker:
+      - image: circleci/golang:1.12
+    steps:
+      - checkout
+      - run:
+          name: generate
+          command: go run ./generate
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - test
+  cat:
+    docker:
+      - image: ubuntu:19.10
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: cat
+          command: cat /tmp/workspace/test
+
+workflows:
+  version: 2
+  weeeee:
+    jobs:
+      - generate
+      - cat
