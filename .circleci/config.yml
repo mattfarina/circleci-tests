@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: generate
-          command: go run ./generate
+          command: go run ./generator
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
