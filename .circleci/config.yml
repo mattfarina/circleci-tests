@@ -18,7 +18,7 @@ jobs:
     steps:
       - run:
           name: install ca
-          command: sudo apt-get install ca-certificates -y
+          command: apt-get install ca-certificates -y
       - attach_workspace:
           at: /tmp/workspace
       - run:
